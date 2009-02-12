@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute" width="400" height="200" currentState="Start">
+    <mx:states>
+        <mx:State name="Start">
+            <mx:AddChild position="lastChild">
+                <mx:Button horizontalCenter="0" top="36" label="Record" click="currentState='Recording'"/>
+            </mx:AddChild>
+        </mx:State>
+        <mx:State name="Recording">
+            <mx:AddChild position="lastChild">
+                <mx:Button horizontalCenter="0" top="36" label="Stop Recording" click="currentState='Review'"/>
+            </mx:AddChild>
+        </mx:State>
+        <mx:State name="Review">
+            <mx:AddChild position="lastChild">
+                <mx:Button horizontalCenter="0" top="102" label="It sucks?  Try again!" click="currentState='Start'"/>
+            </mx:AddChild>
+            <mx:AddChild position="lastChild">
+                <mx:HBox horizontalCenter="0" y="36">  
+                    <mx:Button label="Play" click="progressBar.setProgress(progressBar.value + 0.1, 1)" />
+                    <mx:Button label="Pause" click="progressBar.setProgress(0, 1)" />
+                </mx:HBox>
+            </mx:AddChild>
+            <mx:AddChild position="lastChild">
+                <mx:ProgressBar horizontalCenter="0" y="66" label="" id="progressBar" mode="manual"/>
+            </mx:AddChild>
+            <mx:AddChild position="lastChild">
+                <mx:Button horizontalCenter="0" y="132" label="I LOVE it, submit this take." click="currentState='Submitted'"/>
+            </mx:AddChild>
+        </mx:State>
+        <mx:State name="Submitted">
+            <mx:AddChild position="lastChild">
+                <mx:Label horizontalCenter="0" y="66" text="Thanks for the submission, we've saved it."/>
+            </mx:AddChild>
+            <mx:AddChild position="lastChild">
+                <mx:Button horizontalCenter="0" y="132" label="Create another recording for this script" click="currentState='Start'"/>
+            </mx:AddChild>
+        </mx:State>
+    </mx:states>
+    
+    <mx:Label top="10" horizontalCenter="0" text="Voxy!"/>
+    
+</mx:Application>
